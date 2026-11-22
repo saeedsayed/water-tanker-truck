@@ -1,73 +1,123 @@
-var TrandingSlider = new Swiper(".tranding-slider", {
-  effect: "coverflow",
-  grabCursor: true,
-  centeredSlides: true,
-  loop: true,
-  slidesPerView: "auto",
-  coverflowEffect: {
-    rotate: 0,
-    stretch: 0,
-    depth: 100,
-    modifier: 2.5,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+// Swiper Slider Initialization
+if (document.querySelector(".tranding-slider")) {
+  new Swiper(".tranding-slider", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 100,
+      modifier: 2.5,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+  });
+}
+
+// Loading Screen Handler with Smooth Fadeout & Fallback
+function hideLoading() {
+  const loading = document.querySelector(".loading");
+  if (loading && loading.style.display !== "none") {
+    loading.style.transition = "opacity 0.4s ease";
+    loading.style.opacity = "0";
+    setTimeout(() => {
+      loading.style.display = "none";
+    }, 400);
+  }
+}
+window.addEventListener("load", hideLoading);
+setTimeout(hideLoading, 2500); // Fallback in case of slow CDN response
+
+// Phone Numbers & Contact Links
+const mainPhone = "0535944272";
+const whatsappNumber = "966535944272"; // Standard WhatsApp format without '+' or leading zero
+const whatsappLink = `https://wa.me/${whatsappNumber}`;
+const callLink = `tel:${mainPhone}`;
+
+// Safe Conversion Tracking Function
+function triggerConversion(url, isNewTab = false) {
+  let navigated = false;
+  function proceed() {
+    if (navigated) return;
+    navigated = true;
+    if (!url) return;
+    if (isNewTab) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      window.location.href = url;
+    }
+  }
+
+  try {
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: "AW-18573249446/JjsSCIfYpb0dEKaXtZhF",
+        event_callback: proceed,
+      });
+    }
+  } catch (err) {
+    console.warn("Analytics tracking bypassed:", err);
+  }
+
+  // Fallback timeout to ensure user is never blocked
+  setTimeout(proceed, 300);
+}
+
+// Populate WhatsApp Buttons
+const whatsappButtons = document.querySelectorAll(".whatsapp-button");
+whatsappButtons.forEach((element) => {
+  element.innerHTML = `
+    <a
+      class="num-container whatsapp-container"
+      href="${whatsappLink}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="تواصل معنا عبر الواتساب"
+    >
+      <i class="fab fa-whatsapp"></i>
+      <h5>تواصل معنا عبر الواتساب</h5>
+    </a>`;
+
+  const link = element.querySelector("a");
+  if (link) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      triggerConversion(whatsappLink, true);
+    });
+  }
 });
 
-var loading = document.querySelector(".loading");
-window.onload = function () {
-  loading.style.display = "none";
-};
+// Populate Call Buttons
+const callButtons = document.querySelectorAll(".call-button");
+callButtons.forEach((element) => {
+  element.innerHTML = `
+    <a
+      class="num-container call-container"
+      href="${callLink}"
+      aria-label="تواصل معنا عبر الاتصال المباشر"
+    >
+      <i class="fas fa-phone-alt"></i>
+      <h5>تواصل معنا عبر الاتصال</h5>
+    </a>`;
 
-let mainPhone = "0535944272";
-let whatsappNumber = "0535944272";
-let whatsappLink = "https://wa.me/+9660535944272";
-let callLink = "tel:966500450712";
-
-let whatsappButton = document.querySelectorAll(".whatsapp-button");
-let callButton = document.querySelectorAll(".call-button");
-whatsappButton.forEach((element) => {
-  element.innerHTML = `<a
-    class="num-container"
-    style="
-      border: none;
-      background-color: white;
-      padding: 11px 20px;
-      text-decoration: none;
-    "
-    href="${whatsappLink}"
-    target="_blank"
-  >
-    <i class="fab fa-whatsapp mr-2"></i>
-    <h5 style="font-size:20px;">تواصل معنا عبر الواتساب</h5>
-  </a>`;
-  element.querySelector("a").addEventListener("click", (event) => {
-    event.preventDefault();
-    gtag_report_conversion(whatsappLink);
-  });
-});
-callButton.forEach((element) => {
-  element.innerHTML = ` <a
-    class="num-container"
-    style="
-      border: none;
-      background-color: white;
-      padding: 11px 20px;
-      text-decoration: none;
-    "
-    href="${callLink}"
-  >
-    <i class="fas fa-phone-alt mr-2"></i>
-    <h5 style="font-size:20px;">تواصل معنا عبر الاتصال</h5>
-  </a>`;
-  element.querySelector("a").addEventListener("click", (event) => {
-    event.preventDefault();
-    gtag_report_conversion(callLink);
-  });
+  const link = element.querySelector("a");
+  if (link) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      triggerConversion(callLink, false);
+    });
+  }
 });

@@ -6,7 +6,7 @@
 
     <meta
       name="description"
-      content="وايت مياه بالرياض لتعبئة الخزانات بمياه تحلية صالحة للشرب. نقدم خدمة توصيل سريعة ومميزة لضمان رضاكم الكامل."
+      content="وايت مياه بالرياض لتعبئة الخزانات بمياه تحلية صالحة للشرب. نقدم خدمة توصيل سريعة ومميزة على مدار 24 ساعة لضمان رضاكم الكامل."
     />
 
     <meta
@@ -17,39 +17,35 @@
     <meta name="author" content="وايت مياه" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
     <meta
       property="og:title"
       content="وايت مياه - مياه تحلية صالحة للشرب بالرياض"
     />
-
     <meta
       property="og:description"
       content="وايت مياه بالرياض لتعبئة الخزانات بمياه تحلية صالحة للشرب. نقدم خدمة توصيل سريعة ومميزة لضمان رضاكم الكامل."
     />
-
     <meta property="og:image" content="assets/1.jpg" />
-    <meta property="og:url" content="https://yourwebsite.com" />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-
     <meta
       name="twitter:title"
       content="وايت مياه - مياه تحلية صالحة للشرب بالرياض"
     />
-
     <meta
       name="twitter:description"
       content="وايت مياه بالرياض لتعبئة الخزانات بمياه تحلية صالحة للشرب. نقدم خدمة توصيل سريعة ومميزة لضمان رضاكم الكامل."
     />
-
     <meta name="twitter:image" content="assets/1.jpg" />
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <title>وايت مياه - مياه تحلية صالحة للشرب بالرياض</title>
 
-    <link rel="stylesheet" href="style.css" />
-
+    <!-- Bootstrap 5.3.3 RTL -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.rtl.min.css"
@@ -58,7 +54,16 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- Google Ads tag -->
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Tag & Ads -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=GTM-W9MTGS8L"
@@ -66,48 +71,40 @@
 
     <script>
       window.dataLayer = window.dataLayer || [];
-
       function gtag() {
         dataLayer.push(arguments);
       }
-
       gtag("js", new Date());
 
-      // Google Tag Manager / Google tag
+      // Google Tag Manager & Google Ads config
       gtag("config", "GTM-W9MTGS8L");
-
-      // Google Ads
       gtag("config", "AW-18573249446");
 
-      // Google Ads conversion tracking
+      // Conversion reporting helper
       function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof url !== "undefined") {
-            window.location = url;
-          }
-        };
-
-        gtag("event", "conversion", {
-          send_to: "AW-18573249446/JjsSCIfYpb0dEKaXtZhF",
-          event_callback: callback,
-        });
-
-        setTimeout(callback, 50);
-
+        if (typeof triggerConversion === "function") {
+          return triggerConversion(url, false);
+        }
+        if (url) {
+          window.location.href = url;
+        }
         return false;
       }
     </script>
   </head>
-  <body style="overflow-x: hidden">
-    <div class="loading">
-      <div class="spinner-border" style="filter: invert()" role="status">
-        <span class="sr-only"></span>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading" aria-live="polite">
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">جاري التحميل...</span>
       </div>
     </div>
+
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <h3 style="padding-top: 10px; margin: 0">وايت مياه</h3>
+        <a class="navbar-brand" href="index.html">
+          <h3>وايت مياه</h3>
         </a>
         <button
           class="navbar-toggler"
@@ -116,14 +113,13 @@
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation"
+          aria-label="تبديل القائمة"
         >
-          <!-- SVG Icon -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="black"
+            width="28"
+            height="28"
+            fill="currentColor"
             class="bi bi-list"
             viewBox="0 0 16 16"
           >
@@ -134,7 +130,7 @@
           </svg>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto" style="padding-left: 20px">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a
                 class="nav-link active"
@@ -146,38 +142,35 @@
                   src="https://cdn.lordicon.com/cnpvyndp.json"
                   trigger="hover"
                   colors="primary:#005eff"
-                  style="width: 30px; height: 30px"
+                  style="width: 28px; height: 28px"
                 >
                 </lord-icon>
-                الرئيسة</a
-              >
+                الرئيسية
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="about" data-link="true" href="about.html">
+              <a class="nav-link" id="about" href="about.html">
                 <lord-icon
                   src="https://cdn.lordicon.com/aklfruoc.json"
                   trigger="hover"
                   colors="primary:#005eff"
-                  style="width: 30px; height: 30px"
+                  style="width: 28px; height: 28px"
                 >
                 </lord-icon>
                 خدمات التوصيل
               </a>
             </li>
-            <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li> -->
             <li class="nav-item">
               <a class="nav-link" id="contact" href="tel:0535944272">
                 <lord-icon
                   src="https://cdn.lordicon.com/rsvfayfn.json"
                   trigger="hover"
                   colors="primary:#005eff"
-                  style="width: 30px; height: 30px"
+                  style="width: 28px; height: 28px"
                 >
-                </lord-icon
-                >اتصل بنا</a
-              >
+                </lord-icon>
+                اتصل بنا
+              </a>
             </li>
           </ul>
         </div>
@@ -185,224 +178,267 @@
     </nav>
 
     <div id="butter">
+      <!-- Hero Section -->
       <main>
         <div id="mainPage" class="container text-center">
-          <h1 class="fs-1 typed-text"></h1>
-          <p class="fs-1 mb-3 text-center">
-            وايت مياه تحليه لتعبئة الخزانات علوي وأرضي بالرياض وايت مياه صالحة
-            للشرب
+          <h1 class="fs-1 typed-text">وايت مياه صالحة للشرب بالرياض</h1>
+          <p class="fs-2 mb-4 text-center">
+            وايت مياه تحلية لتعبئة الخزانات علوي وأرضي بالرياض - مياه صالحة
+            للشرب ونقية بأعلى معايير الجودة على مدار الساعة.
           </p>
-          <div class="call-button"></div>
-          <div class="whatsapp-button"></div>
-          <!-- <a
-            class="btn btn-primary fs-1"
-            href="tel:0999999999"
-            styl
-            role="button"
-          >
-            اتصل بنا</a
-          > -->
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <div class="call-button"></div>
+            <div class="whatsapp-button"></div>
+          </div>
         </div>
 
-        <img class="scroll" src="assets/scroll.gif" alt="" srcset="" />
+        <img
+          class="scroll"
+          src="assets/scroll.gif"
+          alt="تمرير للأسفل"
+          width="130"
+          height="130"
+        />
       </main>
+
+      <!-- About / Health Section -->
       <section class="container section">
-        <!-- <div class=" section"> -->
-        <div class="row align-items-center">
-          <div class="col-lg-6 col-md-12">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6 col-md-12 text-center">
             <img
               id="woman"
               class="img-fluid"
               src="assets/1.jpg"
-              alt=""
-              srcset=""
+              alt="تعبئة مياه تحلية صالحة للشرب في الرياض"
+              loading="lazy"
             />
           </div>
           <div class="col-lg-6 col-md-12">
-            <h2 id="section-h2" class="fs-1 mt-4">صحتك أهم</h2>
-            <p d="section-p" class="fs-2 mt-3">
+            <h2 id="section-h2" class="fs-1 mt-2">صحتك أهم</h2>
+            <p id="section-p" class="fs-2 mt-3">
               في وايت مياه صالحة للشرب، نفخر بتقديم ماء نقي وعالي الجودة لضمان
-              صحة وسلامة عملائنا
+              صحة وسلامة عملائنا الكرام.
             </p>
             <p class="fs-2 mt-3">
-              نحن نستخدم أحدث التقنيات في معالجة المياه لضمان تقديم مياه نظيفة
-              وصحية
+              نحن نستخدم أحدث التقنيات في نقل وتعبئة المياه لضمان تقديم مياه
+              نظيفة وصحية مطابقة للمواصفات.
             </p>
             <p class="fs-2 mt-3">
-              نحن نلتزم بتقديم أفضل خدمة توصيل مياه في الرياض، مع ضمان وصول
-              المياه إلى باب منزلك في الوقت المحدد
+              نلتزم بتقديم أفضل وأسرع خدمة توصيل مياه في جميع أحياء الرياض، مع
+              ضمان وصول المياه إلى باب منزلك أو منشأتك في أسرع وقت.
             </p>
-            <div class="call-button"></div>
-            <!-- <a
-                class="btn btn-primary fs-1 mt-5"
-                href="tel:09999999999"
-                role="button"
-              >
-                اتصل بنا</a
-              > -->
+            <div class="call-button mt-4"></div>
           </div>
         </div>
-        <!-- </div> -->
       </section>
-      <section class="container">
-        <!-- <div class="container"> -->
-        <div id="reverse" class="row align-items-center">
+
+      <!-- Delivery Service Section -->
+      <section class="container section pt-0">
+        <div id="reverse" class="row align-items-center g-4">
           <div class="col-lg-6 col-md-12">
-            <h2 id="section2-h2" class="fs-1 mt-4">خدمة توصيل مميزة</h2>
-            <p d="section2-p" class="fs-2 mt-3">
+            <h2 id="section2-h2" class="fs-1 mt-2">خدمة توصيل مميزة</h2>
+            <p id="section2-p" class="fs-2 mt-3">
               نلتزم بتوصيل المياه النظيفة في أسرع وقت ممكن وبأعلى معايير السلامة
-              والجودة لضمان رضاكم الكامل
+              والجودة لضمان رضاكم التام. وايتات بأحجام مختلفة لتلبية احتياجات
+              المنازل والمنشآت.
             </p>
-            <a
-              class="btn btn-primary fs-1 mt-5"
-              href="about.html"
-              role="button"
-            >
-              خدمة التوصيل
-            </a>
+            <div class="mt-4">
+              <a class="btn btn-primary fs-3" href="about.html" role="button">
+                تفاصيل خدمات التوصيل
+              </a>
+            </div>
           </div>
-          <div class="col-lg-6 col-md-12">
+          <div class="col-lg-6 col-md-12 text-center">
             <img
               id="man"
               class="img-fluid"
               src="assets/m9.jpg"
-              alt=""
-              srcset=""
+              alt="شاحنات وايت مياه جاهزة للتوصيل بالرياض"
+              loading="lazy"
             />
           </div>
         </div>
-        <!-- </div> -->
       </section>
 
-      <section class="trucks">
-        <div class="slide">
-          <img class="img-fluid" src="assets/3.jpg" alt="" />
-          <div class="call-button"></div>
+      <!-- Gallery / Fleet Section -->
+      <section class="container section pt-0">
+        <div class="text-center mb-4">
+          <h2 class="fs-1">أسطول وايتات المياه</h2>
+          <p class="fs-2 text-muted">
+            جاهزون لتلبية طلباتكم على مدار الساعة في جميع مناطق الرياض
+          </p>
         </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/1.jpg" alt="" />
-          <div class="call-button"></div>
-        </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/5.jpg" alt="" />
-          <div class="call-button"></div>
-        </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/6.jpg" alt="" />
-          <div class="call-button"></div>
-        </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/11.jpg" alt="" />
-          <div class="call-button"></div>
-        </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/22.jpg" alt="" />
-          <div class="call-button"></div>
-        </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/33.jpg" alt="" />
-          <div class="call-button"></div>
-        </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/44.jpg" alt="" />
-          <div class="call-button"></div>
-        </div>
-        <div class="slide">
-          <img class="img-fluid" src="assets/55.jpg" alt="" />
-          <div class="call-button"></div>
+        <div class="trucks">
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/3.jpg"
+              alt="وايت ماء بالرياض 1"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/1.jpg"
+              alt="وايت ماء بالرياض 2"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/5.jpg"
+              alt="وايت ماء بالرياض 3"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/6.jpg"
+              alt="وايت ماء بالرياض 4"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/11.jpg"
+              alt="وايت ماء بالرياض 5"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/22.jpg"
+              alt="وايت ماء بالرياض 6"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/33.jpg"
+              alt="وايت ماء بالرياض 7"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/44.jpg"
+              alt="وايت ماء بالرياض 8"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
+          <div class="slide">
+            <img
+              class="img-fluid"
+              src="assets/55.jpg"
+              alt="وايت ماء بالرياض 9"
+              loading="lazy"
+            />
+            <div class="call-button"></div>
+          </div>
         </div>
       </section>
 
-      <!-- footer -->
-      <footer id="footer1" class="bg-dark p-5">
-        <h5 class="fs-1 text-center text-white mb-5">
-          وايت مياه لمياه صالحة للشرب
-        </h5>
+      <!-- Footer -->
+      <footer id="footer1" class="p-5">
+        <h5 class="fs-1 text-center mb-4">وايت مياه لمياه تحلية صالحة للشرب</h5>
 
-        <div class="container text-center text-white">
-          <h3 class="fs-2">
-            <i class="fas fa-map-marker-alt mr-2"></i> موقع الشركة: الرياض
+        <div class="container text-center">
+          <h3 class="fs-2 mb-3">
+            <i class="fas fa-map-marker-alt ms-2 text-danger"></i> نطاق الخدمة:
+            جميع أحياء الرياض
           </h3>
-          <ul class="list-unstyled">
-            <li class="fs-2">
-              <span class="text-primary" style="font-size: 1.5rem">•</span>شمال
-              الرياض
+          <ul class="d-flex flex-wrap justify-content-center gap-4">
+            <li class="fs-3">
+              <span class="text-primary">•</span> شمال الرياض
             </li>
-            <li class="fs-2">
-              <span class="text-primary" style="font-size: 1.5rem">•</span>جنوب
-              الرياض
+            <li class="fs-3">
+              <span class="text-primary">•</span> جنوب الرياض
             </li>
-            <li class="fs-2">
-              <span class="text-primary" style="font-size: 1.5rem">•</span>
-              شرق الرياض
-            </li>
-            <li class="fs-2">
-              <span class="text-primary" style="font-size: 1.5rem">•</span>
-              غرب الرياض
-            </li>
+            <li class="fs-3"><span class="text-primary">•</span> شرق الرياض</li>
+            <li class="fs-3"><span class="text-primary">•</span> غرب الرياض</li>
           </ul>
         </div>
 
         <div class="container text-center mt-4">
-          <div class="row">
-            <div class="col-12 mb-3 text-center">
-              <div class="call-button"></div>
-            </div>
-            <div class="col-12">
-              <div class="whatsapp-button"></div>
-            </div>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <div class="call-button"></div>
+            <div class="whatsapp-button"></div>
           </div>
+        </div>
+
+        <div class="text-center mt-4 text-secondary fs-5">
+          جميع الحقوق محفوظة &copy; وايت مياه الرياض
         </div>
       </footer>
     </div>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
+    <!-- Floating Quick Contact Buttons -->
+    <div class="floating-contacts">
+      <a
+        href="https://wa.me/966535944272"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="floating-btn whatsapp"
+        aria-label="تواصل عبر الواتساب"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a
+        href="tel:0535944272"
+        class="floating-btn phone"
+        aria-label="اتصال هاتفي مباشر"
+      >
+        <i class="fas fa-phone-alt"></i>
+      </a>
+    </div>
 
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Scripts -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
       integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <!-- <script src="bootstrap.min.js"></script> -->
-    <!-- <script src="butter.js"></script>
-    <script>
-        butter.init({cancelOnTouch: true});
-      </script> -->
 
-    <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
-
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js"></script>
 
     <script>
-      ScrollReveal({
-        distance: "50px",
-        duration: 1000,
-        delay: false,
-      });
-      ScrollReveal().reveal("h2", { delay: 0, origin: "bottom" });
-      ScrollReveal().reveal("p", { delay: 100, origin: "bottom" });
-      ScrollReveal().reveal(".btn", { delay: 100, origin: "bottom" });
-      ScrollReveal().reveal("h1", { origin: "bottom" });
-      ScrollReveal().reveal("h3", { origin: "bottom" });
-      ScrollReveal().reveal("footer li", { origin: "bottom" });
-      ScrollReveal().reveal(".slide img", { origin: "bottom" });
-      ScrollReveal().reveal(".num-container", { origin: "bottom" });
-      ScrollReveal().reveal("main", { origin: "top" });
-      ScrollReveal().reveal("#woman", { origin: "bottom" });
-      ScrollReveal().reveal("#man", { origin: "bottom" });
+      if (typeof ScrollReveal !== "undefined") {
+        const sr = ScrollReveal({
+          distance: "40px",
+          duration: 900,
+          easing: "ease-out",
+          reset: false,
+        });
+
+        sr.reveal("h2", { origin: "bottom", delay: 100 });
+        sr.reveal("p", { origin: "bottom", delay: 150 });
+        sr.reveal(".btn", { origin: "bottom", delay: 200 });
+        sr.reveal("h1", { origin: "bottom" });
+        sr.reveal("h3", { origin: "bottom" });
+        sr.reveal("footer li", { origin: "bottom", interval: 80 });
+        sr.reveal(".slide", { origin: "bottom", interval: 100 });
+        sr.reveal("#woman", { origin: "right", delay: 200 });
+        sr.reveal("#man", { origin: "left", delay: 200 });
+      }
     </script>
   </body>
 </html>
