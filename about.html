@@ -35,22 +35,43 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
-        <!-- google ads tag -->
+    <!-- Google Ads tag -->
     <script
       async
-      src="https://www.googletagmanager.com/gtm.js?id=GTM-W9MTGS8L"
+      src="https://www.googletagmanager.com/gtag/js?id=GTM-W9MTGS8L"
     ></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
+
       function gtag() {
         dataLayer.push(arguments);
       }
+
       gtag("js", new Date());
-      gtag('config', 'AW-18573249446');
+
+      // Google Tag Manager / Google tag
+      gtag("config", "GTM-W9MTGS8L");
+
+      // Google Ads
+      gtag("config", "AW-18573249446");
+
+      // Google Ads conversion tracking
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url !== "undefined") {
+            window.location = url;
+          }
+        };
+
+        gtag("event", "conversion", {
+          send_to: "AW-18573249446/JjsSCIfYpb0dEKaXtZhF",
+          event_callback: callback,
+        });
+
+        return false;
+      }
     </script>
-    <!-- //////////////////////////////// -->
-     <!-- Event snippet for Contact (1) conversion page --> 
-      <script> gtag('event', 'conversion', {'send_to': 'AW-18573249446/JjsSCIfYpb0dEKaXtZhF'}); </script>
   </head>
 
   <body>

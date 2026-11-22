@@ -39,6 +39,7 @@ whatsappButton.forEach((element) => {
     "
     href="${whatsappLink}"
     target="_blank"
+    onclick="return gtag_report_conversion('${whatsappLink}');"
   >
     <i class="fab fa-whatsapp mr-2"></i>
     <h5 style="font-size:20px;">تواصل معنا عبر الواتساب</h5>
@@ -52,9 +53,9 @@ callButton.forEach((element) => {
       background-color: white;
       padding: 11px 20px;
       text-decoration: none;
-     
     "
-    href=${callLink}
+    href="${callLink}"
+    onclick="return gtag_report_conversion('${callLink}');"
   >
     <i class="fas fa-phone-alt mr-2"></i>
     <h5 style="font-size:20px;">تواصل معنا عبر الاتصال</h5>
