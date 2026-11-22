@@ -43,6 +43,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- google tag -->
+    <script
+      async
+      custom-element="amp-analytics"
+      src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
+    ></script>
+    <!-- //////////////////// -->
     <!-- google ads tag -->
     <script
       async
@@ -342,6 +349,20 @@
       </script> -->
 
     <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
+
+    <!-- Google tag (gtag.js) -->
+    <amp-analytics type="gtag" data-credentials="include">
+      <script type="application/json">
+        {
+          "vars": {
+            "gtag_id": "GTM-W9MTGS8L",
+            "config": { "GTM-W9MTGS8L": { "groups": "default" } }
+          },
+          "triggers": {}
+        }
+      </script>
+    </amp-analytics>
+    <!-- //////////////////// -->
 
     <script src="script.js"></script>
 
