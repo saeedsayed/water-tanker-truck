@@ -53,7 +53,7 @@ function triggerConversion(url, isNewTab = false) {
   try {
     if (typeof gtag === "function") {
       gtag("event", "conversion", {
-        send_to: "AW-18573249446/JjsSCIfYpb0dEKaXtZhF",
+        send_to: "AW-18573249446/_dMrCMvkrr0dEKaXtZhF",
         event_callback: proceed,
       });
     }
